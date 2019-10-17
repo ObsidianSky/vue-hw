@@ -1,4 +1,4 @@
-export default function dateFilter(value: string) {
+export default function dateFilter(value: string): string {
     const date = new Date(value);
 
     return date.toLocaleString(
