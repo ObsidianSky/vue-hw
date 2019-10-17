@@ -3,17 +3,18 @@
             max-width="400">
         <v-img class="white--text"
                height="300px"
-               :src="movie.poster_path || movie.backdrop_path | tmdbImageBase">
+               :src="movie.getPosterPath() | tmdbImageBase(500)">
             <v-card-title class="align-end fill-height">
                 <span class="movie-title">{{movie.title}}</span>
             </v-card-title>
-            <MovieRating class="movie-rating" :rating='movie.vote_average'></MovieRating>
+
+            <MovieRating class="movie-rating" :rating='movie.vote_average'/>
         </v-img>
 
         <v-card-text>
             <span>{{ movie.release_date | date}}</span>
             <div class="text--primary">
-                <span>{{movie.overview | ellipsis(200)}}</span>
+                <span>{{movie.overview | ellipsis(100)}}</span>
             </div>
         </v-card-text>
     </v-card>
@@ -21,16 +22,16 @@
 
 <script lang="ts">
     import { Component, Prop, Vue } from 'vue-property-decorator';
-    import { Movie } from "@/tmdb-api.ts"
-    import MovieRating from "./MovieRating.vue";
+    import MovieRating from './MovieRating.vue';
+    import { ShortMovieDetails } from '@/tmdb-api/tmdb.models';
 
     @Component({
         components: {
             MovieRating
-        },
+        }
     })
     export default class MovieCard extends Vue {
-        @Prop({type: Movie, required: true}) movie: Movie;
+        @Prop({type: ShortMovieDetails, required: true}) movie: ShortMovieDetails;
     }
 </script>
 

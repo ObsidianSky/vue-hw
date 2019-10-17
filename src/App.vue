@@ -1,19 +1,28 @@
 <template>
-  <v-app>
-    <Home/>
-  </v-app>
+    <v-app>
+        <app-top-bar/>
+        <router-view/>
+    </v-app>
 </template>
 
 <script lang="ts">
-  import { Component, Vue } from 'vue-property-decorator';
-  import Home from "@/components/Home.vue";
+    import { Component, Vue } from 'vue-property-decorator';
+    import HomePage from '@/components/HomePage.vue';
+    import MoviePage from '@/components/MoviePage.vue';
+    import AppTopBar from '@/components/AppTopBar.vue';
 
-  @Component({
-    components: {
-      Home
-    }
-  })
-  export default class App extends Vue {}
+    @Component({
+        components: {
+            HomePage,
+            MoviePage,
+            AppTopBar
+        }
+    })
+    export default class App extends Vue {}
 </script>
 
-<style lang="scss"></style>
+<style>
+  a {
+    text-decoration: none;
+  }
+</style>
